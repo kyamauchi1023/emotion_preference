@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Styling for audio container */
+#audio-container div {
+    margin-bottom: 15px;
+}
+
+audio {
+    display: block;
+    margin: 10px auto;
+}
+
+/* Adjust container layout */
+#ranking-container {
+    display: flex;
+    justify-content: center; /* Center the ranking section */
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.rank-item {
+    width: 100px;  /* Adjust card width to match slot */
+    height: 60px;  /* Adjust card height to match slot */
+    border: 2px solid #333;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 18px;
+    background-color: #b8d6f9; /* Change card color to light blue */
+    color: #333;
+    cursor: grab;
+}
+
+.rank-item:hover {
+    background-color: #ddd;
+}
+
+.disabled {
+    background-color: #e0e0e0;
+    pointer-events: none;
+}
+
+/* Style for the drop slots */
+.drop-slot {
+    width: 100px;
+    height: 60px;
+    border: 2px dashed #333;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 18px;
+    background-color: #f8f8f8;
+    color: #333;
+    margin-left: 3cm; /* Set distance to approximately 3cm */
+    position: relative; /* Make it easier to position the rank label */
+}
+
+/* Right-aligned rank labels */
+.drop-slot::after {
+    content: attr(data-rank) " place";
+    position: absolute;
+    right: -80px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #333;
+}
+
+/* Style for the ranking list and cards */
+#ranking-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Center the trial count and emotion display */
+#trial-count, #emotion-label {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Center the Rank the samples text */
+h2 {
+    text-align: center;
+}
+
+/* Styling the submit button */
+#submit-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Flex container for the audio and ranking areas */
+#experiment-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}

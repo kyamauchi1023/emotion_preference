@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Ranking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="experiment-container">
+        <h1>Emotion Speech Ranking</h1>
+        <p id="trial-count">Question 1/10</p>
+        <p>Please listen to the five speech samples by pressing the play button, and rank the speech samples in order of appropriate emotional expression.</p> <!-- Instruction -->
+        <h2 id="emotion-label" style="color:#0000ff;">Emotion: Neutral</h2> <!-- Emotion label -->
+        
+        <div id="audio-container">
+            <div>Speech Sample A: <audio id="audio0" controls></audio></div>
+            <div>Speech Sample B: <audio id="audio1" controls></audio></div>
+            <div>Speech Sample C: <audio id="audio2" controls></audio></div>
+            <div>Speech Sample D: <audio id="audio3" controls></audio></div>
+            <div>Speech Sample E: <audio id="audio4" controls></audio></div>
+        </div>
+
+        <h2>Rank the samples:</h2>
+        <p>Note: Once all five audio samples have been played, you can insert the card into the slot.</p>
+        <button id="reset-button">Reset Ranking</button>
+        <div id="ranking-container">
+            <!-- Left side: Cards -->
+            <ul id="ranking-list">
+                <li class="rank-item" draggable="true">A</li>
+                <li class="rank-item" draggable="true">B</li>
+                <li class="rank-item" draggable="true">C</li>
+                <li class="rank-item" draggable="true">D</li>
+                <li class="rank-item" draggable="true">E</li>
+            </ul>
+
+            <!-- Right side: Ranking slots -->
+            <div id="ranking-slots">
+                <div class="drop-slot" data-rank="1st"></div> <!-- Slot for 1st place -->
+                <div class="drop-slot" data-rank="2nd"></div> <!-- Slot for 2nd place -->
+                <div class="drop-slot" data-rank="3rd"></div> <!-- Slot for 3rd place -->
+                <div class="drop-slot" data-rank="4th"></div> <!-- Slot for 4th place -->
+                <div class="drop-slot" data-rank="5th"></div> <!-- Slot for 5th place -->
+            </div>
+        </div>
+
+        <button id="submit-button" disabled>Submit Ranking</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
