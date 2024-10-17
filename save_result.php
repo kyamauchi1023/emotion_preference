@@ -5,7 +5,7 @@
 
     // $fname = "/home/ss-takashi/www/".$_POST["to"].$_POST["fname"];
     $fname = $_POST["to"].$_POST["fname"];
-    $result = $_POST["csvData"]
+    $result = $_POST["csvData"];
 
     $fp = fopen($fname, 'w');
     fwrite($fp, $result);
