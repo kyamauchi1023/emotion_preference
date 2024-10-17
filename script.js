@@ -1,4 +1,4 @@
-const numTrials = 2;
+const numTrials = 5;
 let currentTrial = 0;
 let rankings = [];
 let sampleIds = [0, 1, 2, 3, 4];
