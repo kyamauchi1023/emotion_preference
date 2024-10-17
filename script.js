@@ -1,4 +1,4 @@
-const numTrials = 5;
+const numTrials = 2;
 let currentTrial = 0;
 let rankings = [];
 let sampleIds = [0, 1, 2, 3, 4];
@@ -164,8 +164,6 @@ document.getElementById('submit-button').addEventListener('click', () => {
         handleResetRanking();
     } else {
         saveResults();  // Save results at the end of all trials
-        // alert("Experiment complete!");
-        window.location.href = "complete.html"; // Redirect to completion page
     }
 });
 
@@ -189,17 +187,30 @@ function handleResetRanking() {
 
 // Save the results to a CSV file
 function saveResults() {
-    let csvContent = "data:text/csv;charset=utf-8,Trial,RankA,RankB,RankC,RankD,RankE\n";
+    // let csvContent = "data:text/csv;charset=utf-8,Trial,RankA,RankB,RankC,RankD,RankE\n";
+    let csvContent = "Trial,RankA,RankB,RankC,RankD,RankE\n";
     rankings.forEach((rank, index) => {
         csvContent += `${index + 1},${rank.join(",")}\n`;
     });
 
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", `log/${speakerId}_${textId}_${emotionId}_rankings.csv`);
-    document.body.appendChild(link); // Required for Firefox
-    link.click();
+    var d = new Date();
+    var year  = d.getFullYear();
+    var month = (d.getMonth() + 1).toString().padStart(2, '0'); // ゼロ埋めで2桁にする
+    var day   = d.getDate().toString().padStart(2, '0');
+    var hour  = d.getHours().toString().padStart(2, '0');
+    var min   = d.getMinutes().toString().padStart(2, '0');
+    var sec   = d.getSeconds().toString().padStart(2, '0');
+    var fname = year + month + day + hour + min + sec + ".csv"; // ファイル名：年月日時分秒.csv
+
+    var form = document.getElementById('csvForm');
+
+    form.action = "save_result.php"; // ジャンプ先 (結果保存用の php)
+    form.method = 'post'; // POST で送信
+    form.elements["fname"].value = fname;
+    form.elements["to"].value = "log/"; // 結果を送る先を指定 !!!超重要!!!
+    form.elements["csvData"].value = csvContent
+
+    form.submit();
 }
 
 // Load the first trial
